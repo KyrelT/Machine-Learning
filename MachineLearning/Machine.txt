@@ -1,0 +1,31 @@
+X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=0.2,random_state=42)
+model = DecisionTreeRegressor(random_state=42)
+model.fit(newX_train_shape, y_train)
+predictions = model.predict(newX_test)
+
+
+from sklearn.tree import plot_tree
+plt.figure(figsize=(15,8), dpi=200)
+plot_tree(model);
+
+
+plt.scatter(X, newY,color='black')
+plt.plot(newX_test,model.predict(newX_test),color='red')
+plt.xlabel('house age')
+plt.ylabel('price')
+plt.show()
+
+
+print(predictions)
+
+
+# extracting MSE from the decision tree
+extracted_MSEs = model.tree_.impurity
+for idx, MSE in enumerate(model.tree_.impurity):
+    print("Node {} has MSE {}".format(idx,MSE))
+
+
+newX_train = X_train
+newX_train_shape = newX_train.values.reshape(331,1)
+newX_test = X_test.values.reshape(83,1)
+newY = y.values.reshape(414,1)
