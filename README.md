@@ -2,6 +2,7 @@
 Types of Machine Learning Methods
 There are Classifications and Regression task
 Both task can be done in 4 models
+
 For Classification:
                     Logistic Regression
                     Support Vector Machine ( Classifier )
